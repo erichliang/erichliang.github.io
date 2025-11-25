@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Academic Website</title>
+    <title>Erich Liang</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -109,6 +109,28 @@
             line-height: 1.5;
         }
 
+        .inline-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .bio-list {
+            margin-top: 8px;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .bio-list li {
+            margin-bottom: 4px;
+        }
+
         .social-links {
             display: flex;
             gap: 12px;
@@ -182,50 +204,10 @@
             border-bottom: none;
         }
 
-        #news-list {
-            max-height: 120px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        #news-list::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        #news-list::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-            border-radius: 4px;
-        }
-
-        #news-list::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        #news-list::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
-        }
-
         h2 {
             font-size: 2em;
             margin-bottom: 30px;
             color: var(--text-primary);
-        }
-
-        .news-item {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-date {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9em;
-            margin-bottom: 5px;
         }
 
         .filter-buttons {
@@ -394,6 +376,17 @@
             .hero {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .bio {
+                text-align: left;
+            }
+
+            .bio p:last-child {
                 text-align: center;
             }
 
@@ -422,6 +415,10 @@
             nav {
                 justify-content: center;
             }
+
+            .bio-list {
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -440,27 +437,40 @@
 
     <main class="container">
         <section class="hero" id="about">
-            <img src="https://via.placeholder.com/200" alt="Profile Photo" class="profile-photo">
+            <img src="data/images/headshot.jpg" alt="Profile Photo" class="profile-photo">
             <div class="hero-content">
-                <h1>Your Name</h1>
-                <div class="title">Assistant Professor • Computer Science • University Name</div>
+                <h1>Erich Liang</h1>
+                <div class="title">Ph.D. Student • 3D Computer Vision • Princeton University</div>
                 <div class="bio">
-                    <p>I am an assistant professor in the Department of Computer Science at University Name. My research focuses on machine learning, computer vision, and artificial intelligence. I am particularly interested in developing methods that enable machines to learn from limited data and generalize to new domains.</p>
-                    <p style="margin-top: 12px;">Previously, I completed my PhD at Another University, where I was advised by Professor Smith. I also spent time as a research intern at Tech Company Lab.</p>
-                    <p style="margin-top: 12px;"><strong>Email:</strong> yourname [at] university [dot] edu</p>
+                    <p>I am a 3rd year Ph.D. student in Computer Science at <a href="https://www.cs.princeton.edu/" class="inline-link" target="_blank" rel="noopener noreferrer">Princeton University</a>, advised by Prof. <a href="https://www.cs.princeton.edu/~jiadeng/" class="inline-link" target="_blank" rel="noopener noreferrer">Jia Deng</a>.
+                        My research interests include <strong>3D vision, graphics, and generative modeling</strong>. I enjoy working on problems that help us combine geometric constraints with large-scale data to build 3D algorithms that mirror how humans perceive the world.
+                        Topics I've explored include:
+                    </p>
+                    <ul class="bio-list">
+                        <li><strong>Imaging & Camera Calibration</strong>: lens optics and calibration for mapping 2D images to 3D.</li>
+                        <li><strong>3D Reconstruction & Geometry</strong>: mesh reconstruction, inverse graphics, SLAM, NeRFs, 3DGS.</li>
+                        <li><strong>Generative 3D Models</strong>: view-based 3D scene generation, occlusion reasoning, diffusion.</li>
+                        <li><strong>Benchmarks & Evaluation</strong>: benchmarks, datasets, and metrics to train and evaluate 3D algorithms.</li>
+                    </ul>
+                    <p>Previously, I served as a research assistant at <a href="https://bair.berkeley.edu/" class="inline-link" target="_blank" rel="noopener noreferrer">BAIR</a>, collaborating with
+                        Prof. <a href="https://www2.eecs.berkeley.edu/Faculty/Homepages/yirenng.html" class="inline-link" target="_blank" rel="noopener noreferrer">Ren Ng</a> and Prof. <a href="https://www-video.eecs.berkeley.edu/~avz/" class="inline-link" target="_blank" rel="noopener noreferrer">Avideh Zakhor</a>.
+                        I graduated with a B.S. in Mathematics and Computer Science from Caltech, where I worked closely with
+                        Prof. <a href="https://users.cms.caltech.edu/~klbouman/" class="inline-link" target="_blank" rel="noopener noreferrer">Katie Bouman</a> and Prof. <a href="https://adamwierman.com/" class="inline-link" target="_blank" rel="noopener noreferrer">Adam Wierman</a>.
+                        I have also interned at companies such as Amazon, Meta, Bloomberg, and Microsoft.</p>
+                    <p style="margin-top: 12px;"><strong>Email:</strong> erliang [at] princeton [dot] edu</p>
                 </div>
                 <ul class="social-links">
                     <li>
-                        <a href="#" class="btn-social"><span class="sr-only">Google Scholar</span><i class="fa fa-graduation-cap"></i></a>
+                        <a href="https://scholar.google.com/citations?user=FQkPVUkAAAAJ&hl=en&oi=ao" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">Google Scholar</span><i class="fa fa-graduation-cap"></i></a>
                     </li>
                     <li>
-                        <a href="#" class="btn-social"><span class="sr-only">GitHub</span><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/erichliang" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">GitHub</span><i class="fab fa-github"></i></a>
                     </li>
                     <li>
-                        <a href="#" class="btn-social"><span class="sr-only">Twitter</span><i class="fab fa-twitter"></i></a>
+                        <a href="https://x.com/ErichLiang" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">Twitter</span><i class="fab fa-twitter"></i></a>
                     </li>
                     <li>
-                        <a href="#" class="btn-social"><span class="sr-only">LinkedIn</span><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/erlian/" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">LinkedIn</span><i class="fab fa-linkedin"></i></a>
                     </li>
                 </ul>
             </div>
@@ -480,9 +490,9 @@
 
         <section id="publications">
             <h2>Publications</h2>
-            <p style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 25px;">
-                My research focuses on enabling machines to learn efficiently from limited data and adapt to new environments. I work at the intersection of machine learning, computer vision, and artificial intelligence, with particular emphasis on few-shot learning, meta-learning, and domain adaptation. I'm interested in developing methods that can generalize across diverse visual domains and require minimal human supervision.
-            </p>
+            <!-- <p style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 25px;">
+                Browse my publications below. Click on the filter buttons to view selected works or publications from specific years.
+            </p> -->
             <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterPublications('all')">All</button>
                 <button class="filter-btn" onclick="filterPublications('highlighted')">Selected</button>
@@ -502,11 +512,11 @@
                         </div>
                         <div class="pub-venue">Neural Information Processing Systems (NeurIPS), 2024 <span class="award-text">(Best Paper Award)</span></div>
                         <div class="pub-links">
-                            <a href="#" class="pub-link">Project Page</a>
-                            <a href="#" class="pub-link">Paper</a>
-                            <a href="#" class="pub-link">arXiv</a>
-                            <a href="#" class="pub-link">Code</a>
-                            <a href="#" class="pub-link">BibTeX</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">arXiv</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">BibTeX</a>
                         </div>
                     </div>
                 </div>
@@ -522,11 +532,11 @@
                         </div>
                         <div class="pub-venue">International Conference on Computer Vision (ICCV), 2024</div>
                         <div class="pub-links">
-                            <a href="#" class="pub-link">Project Page</a>
-                            <a href="#" class="pub-link">Paper</a>
-                            <a href="#" class="pub-link">arXiv</a>
-                            <a href="#" class="pub-link">Code</a>
-                            <a href="#" class="pub-link">BibTeX</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">arXiv</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">BibTeX</a>
                         </div>
                     </div>
                 </div>
@@ -542,10 +552,10 @@
                         </div>
                         <div class="pub-venue">Conference on Computer Vision and Pattern Recognition (CVPR), 2023</div>
                         <div class="pub-links">
-                            <a href="#" class="pub-link">Paper</a>
-                            <a href="#" class="pub-link">arXiv</a>
-                            <a href="#" class="pub-link">Code</a>
-                            <a href="#" class="pub-link">BibTeX</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">arXiv</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">BibTeX</a>
                         </div>
                     </div>
                 </div>
@@ -561,10 +571,10 @@
                         </div>
                         <div class="pub-venue">International Conference on Machine Learning (ICML), 2023</div>
                         <div class="pub-links">
-                            <a href="#" class="pub-link">Project Page</a>
-                            <a href="#" class="pub-link">Paper</a>
-                            <a href="#" class="pub-link">Code</a>
-                            <a href="#" class="pub-link">BibTeX</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                            <a href="#" class="pub-link" target="_blank" rel="noopener noreferrer">BibTeX</a>
                         </div>
                     </div>
                 </div>
@@ -615,11 +625,11 @@
 
     <footer>
         <div class="container">
-            © 2024 Your Name. Last updated: November 2024.
+            © 2024 Erich Liang. Last updated: November 2024.
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function toggleProspective() {
             const content = document.getElementById('prospective-content');
             content.classList.toggle('show');
