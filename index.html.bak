@@ -29,7 +29,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
         }
@@ -72,15 +72,15 @@
         }
 
         .hero {
-            padding: 45px 0;
+            padding: 60px 0;
             display: flex;
             gap: 40px;
             align-items: flex-start;
         }
 
         .profile-photo {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
             flex-shrink: 0;
@@ -106,7 +106,7 @@
         .bio {
             color: var(--text-secondary);
             margin-bottom: 25px;
-            line-height: 1.5;
+            line-height: 1.7;
         }
 
         .social-links {
@@ -174,7 +174,7 @@
         }
 
         section {
-            padding: 35px 0;
+            padding: 50px 0;
             border-bottom: 1px solid var(--border);
         }
 
@@ -183,7 +183,7 @@
         }
 
         #news-list {
-            max-height: 120px;
+            max-height: 200px;
             overflow-y: auto;
             padding-right: 10px;
         }
@@ -430,6 +430,7 @@
         <div class="container">
             <nav>
                 <a href="#about">About</a>
+                <a href="#news">News</a>
                 <a href="#publications">Publications</a>
                 <a href="#mentoring">Mentoring</a>
                 <a href="#teaching">Teaching</a>
@@ -467,6 +468,16 @@
         </section>
 
         <section class="prospective-students">
+            <div style="margin-bottom: 25px;">
+                <h3 style="font-size: 1.1em; margin-bottom: 10px; color: var(--text-primary);">Research</h3>
+                <p style="color: var(--text-secondary); line-height: 1.7;">
+                    My research focuses on enabling machines to learn efficiently from limited data and adapt to new environments. I work at the intersection of machine learning, computer vision, and artificial intelligence, with particular emphasis on few-shot learning, meta-learning, and domain adaptation. I'm interested in developing methods that can generalize across diverse visual domains and require minimal human supervision.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 10px;">
+                    Currently, I'm exploring how neural networks can acquire new visual concepts from just a handful of examples, and how we can build systems that maintain performance when deployed in novel, real-world scenarios.
+                </p>
+            </div>
+            
             <p>
                 <strong>Dear prospective students:</strong> <span class="prospective-toggle" onclick="toggleProspective()">Click here</span> for information.
             </p>
@@ -478,11 +489,30 @@
             </div>
         </section>
 
+        <section id="news">
+            <h2>Recent News</h2>
+            <div id="news-list">
+                <div class="news-item">
+                    <div class="news-date">November 2024</div>
+                    <div>Our paper on few-shot learning was accepted to NeurIPS 2024!</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">October 2024</div>
+                    <div>I will be serving as an Area Chair for CVPR 2025.</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">September 2024</div>
+                    <div>Started a new position as Assistant Professor at University Name.</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">June 2024</div>
+                    <div>Successfully defended my PhD thesis!</div>
+                </div>
+            </div>
+        </section>
+
         <section id="publications">
             <h2>Publications</h2>
-            <p style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 25px;">
-                My research focuses on enabling machines to learn efficiently from limited data and adapt to new environments. I work at the intersection of machine learning, computer vision, and artificial intelligence, with particular emphasis on few-shot learning, meta-learning, and domain adaptation. I'm interested in developing methods that can generalize across diverse visual domains and require minimal human supervision.
-            </p>
             <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterPublications('all')">All</button>
                 <button class="filter-btn" onclick="filterPublications('highlighted')">Selected</button>
