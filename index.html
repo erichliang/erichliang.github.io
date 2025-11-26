@@ -71,6 +71,27 @@
             color: var(--accent);
         }
 
+        /* Hamburger button - hidden by default on desktop */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 5px;
+        }
+
+        .hamburger:hover {
+            color: var(--accent);
+        }
+
+        /* Nav links wrapper */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
         .hero {
             padding: 45px 0;
             display: flex;
@@ -373,6 +394,37 @@
         }
 
         @media (max-width: 768px) {
+            /* Hamburger menu styles */
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                padding-top: 15px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            /* Hero section styles */
             .hero {
                 flex-direction: column;
                 align-items: center;
@@ -412,10 +464,6 @@
                 height: 200px;
             }
 
-            nav {
-                justify-content: center;
-            }
-
             .bio-list {
                 text-align: left;
             }
@@ -426,11 +474,16 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#about">About</a>
-                <a href="#publications">Publications</a>
-                <a href="#mentoring">Mentoring</a>
-                <a href="#teaching">Teaching</a>
-                <a href="path/to/your-cv.pdf" download>CV</a>
+                <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#mentoring">Mentoring</a>
+                    <a href="#teaching">Teaching</a>
+                    <a href="path/to/your-cv.pdf" download>CV</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -633,6 +686,11 @@
         function toggleProspective() {
             const content = document.getElementById('prospective-content');
             content.classList.toggle('show');
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
         }
 
         function filterPublications(filter) {
