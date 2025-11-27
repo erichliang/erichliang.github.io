@@ -76,10 +76,13 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.5em;
+            font-size: 1.2em;
             cursor: pointer;
             color: var(--text-primary);
-            padding: 5px;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            line-height: 1;
         }
 
         .hamburger:hover {
@@ -515,14 +518,14 @@
             <img src="data/images/headshot.jpg" alt="Profile Photo" class="profile-photo">
             <div class="hero-content">
                 <h1>Erich Liang</h1>
-                <!-- <div class="title">Ph.D. Student • 3D Computer Vision • Princeton University</div> -->
+                <div class="title">Ph.D. Student • 3D Computer Vision • Princeton University</div>
                 <div class="bio">
                     <p>I am a 3rd year Ph.D. student in Computer Science at <a href="https://www.cs.princeton.edu/" class="inline-link" target="_blank" rel="noopener noreferrer">Princeton University</a>, advised by Prof. <a href="https://www.cs.princeton.edu/~jiadeng/" class="inline-link" target="_blank" rel="noopener noreferrer">Jia Deng</a>.
                         My research interests include <strong>3D vision, graphics, and generative modeling</strong>. I enjoy working on problems that help us combine geometric constraints with large-scale data to build 3D algorithms that mirror how humans perceive the world.
                         Topics I've explored include:
                     </p>
                     <ul class="bio-list">
-                        <li><strong>Imaging & Camera Calibration</strong>: lens optics and calibration for mapping 2D images to 3D.</li>
+                        <li><strong>Imaging & Camera Calibration</strong>: lens optics and calibration for mapping 3D onto 2D images.</li>
                         <li><strong>3D Reconstruction & Geometry</strong>: mesh reconstruction, inverse graphics, SLAM, NeRFs, 3DGS.</li>
                         <li><strong>Generative 3D Models</strong>: view-based 3D scene generation, occlusion reasoning, diffusion.</li>
                         <li><strong>Benchmarks & Evaluation</strong>: benchmarks, datasets, and metrics to train and evaluate 3D algorithms.</li>
