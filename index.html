@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erich Liang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #2c3e50;
+            --text-secondary: #5a6c7d;
+            --accent: #3498db;
+            --accent-hover: #2980b9;
+            --border: #e1e8ed;
+            --highlight: #fff9e6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        section {
+            scroll-margin-top: 60px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            line-height: 1;
+        }
+
+        .hamburger:hover {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .hero {
+            padding: 20px 0;
+            display: flex;
+            gap: 3%;
+            align-items: flex-start;
+        }
+
+        .profile-photo {
+            width: 20%;
+            max-width: 150px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--border);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .title {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .bio {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .inline-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .bio-list {
+            margin-top: 8px;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .bio-list li {
+            margin-bottom: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-social:hover {
+            color: white;
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-social-text {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-social-text:hover {
+            color: white;
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        section {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.2s;
+            color: var(--text-primary);
+        }
+
+        .filter-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .publication {
+            display: flex;
+            gap: 20px;
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .publication.highlighted {
+            background: var(--highlight);
+            border-radius: 8px;
+            margin: 0;
+        }
+
+        .pub-media-link {
+            flex-shrink: 0;
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pub-media {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .pub-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pub-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .pub-authors .me {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .pub-venue {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .award-text {
+            color: #dc2626;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+        }
+
+        .pub-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .pub-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .pub-link::before {
+            content: "[";
+            color: var(--text-secondary);
+        }
+
+        .pub-link::after {
+            content: "]";
+            color: var(--text-secondary);
+        }
+
+        .prospective-students {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .prospective-students p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .prospective-toggle {
+            color: var(--accent);
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .prospective-toggle:hover {
+            color: var(--accent-hover);
+        }
+
+        .prospective-content {
+            display: none;
+            margin-top: 15px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .prospective-content.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                position: absolute;
+                top: calc(100% + 10px);
+                left: -20px;
+                right: -20px;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .profile-photo {
+                width: 120px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .bio {
+                text-align: left;
+            }
+
+            .bio p:last-child {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .btn-social {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1em;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .title {
+                font-size: 0.95em;
+            }
+
+            .bio-list {
+                text-align: left;
+            }
+
+            .publication {
+                gap: 12px;
+            }
+
+            .pub-title {
+                font-size: 1em;
+            }
+
+            .pub-authors,
+            .pub-venue,
+            .pub-links {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#mentoring">Mentoring</a>
+                    <a href="#teaching">Teaching</a>
+                    <a href="data/LiangErich_CV.pdf" download target="_blank" rel="noopener noreferrer">CV</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero" id="about">
+            <img src="data/images/headshot.jpg" alt="Profile Photo" class="profile-photo">
+            <div class="hero-content">
+                <h1>Erich Liang</h1>
+                <div class="title">Ph.D. Student • 3D Computer Vision • Princeton University</div>
+                <div class="bio">
+                    <p>I am a 3rd year Ph.D. student in Computer Science at <a href="https://www.cs.princeton.edu/" class="inline-link" target="_blank" rel="noopener noreferrer">Princeton University</a>, advised by Prof. <a href="https://www.cs.princeton.edu/~jiadeng/" class="inline-link" target="_blank" rel="noopener noreferrer">Jia Deng</a>.
+                        My research interests include <strong>3D vision, graphics, and generative modeling</strong>. I enjoy working on problems that help us combine geometric constraints with large-scale data to build 3D algorithms that mirror how humans perceive the world.
+                        Topics I've explored include:
+                    </p>
+                    <ul class="bio-list">
+                        <li><strong>Imaging & Camera Calibration</strong>: lens optics and calibration for mapping 3D onto 2D images.</li>
+                        <li><strong>3D Reconstruction & Geometry</strong>: mesh reconstruction, inverse graphics, SLAM, NeRFs, 3DGS.</li>
+                        <li><strong>Generative 3D Models</strong>: view-based 3D scene generation, occlusion reasoning, diffusion.</li>
+                        <li><strong>Benchmarks & Evaluation</strong>: benchmarks, datasets, and metrics to train and evaluate 3D algorithms.</li>
+                    </ul>
+                    <p>Previously, I served as a research assistant at <a href="https://bair.berkeley.edu/" class="inline-link" target="_blank" rel="noopener noreferrer">BAIR</a>, collaborating with
+                        Prof. <a href="https://www2.eecs.berkeley.edu/Faculty/Homepages/yirenng.html" class="inline-link" target="_blank" rel="noopener noreferrer">Ren Ng</a> and Prof. <a href="https://www-video.eecs.berkeley.edu/~avz/" class="inline-link" target="_blank" rel="noopener noreferrer">Avideh Zakhor</a>.
+                        I graduated with a B.S. in Mathematics and Computer Science from Caltech, where I worked closely with
+                        Prof. <a href="https://users.cms.caltech.edu/~klbouman/" class="inline-link" target="_blank" rel="noopener noreferrer">Katie Bouman</a> and Prof. <a href="https://adamwierman.com/" class="inline-link" target="_blank" rel="noopener noreferrer">Adam Wierman</a>.
+                        I have also interned at companies such as Amazon, Meta, Bloomberg, and Microsoft.</p>
+                    <p style="margin-top: 12px;"><strong>Email:</strong> erliang [at] princeton [dot] edu</p>
+                </div>
+                <ul class="social-links">
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=FQkPVUkAAAAJ&hl=en&oi=ao" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">Google Scholar</span><i class="fa fa-graduation-cap"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/erichliang" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">GitHub</span><i class="fab fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://x.com/ErichLiang" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">Twitter</span><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/erlian/" class="btn-social" target="_blank" rel="noopener noreferrer"><span class="sr-only">LinkedIn</span><i class="fab fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="prospective-students">
+            <p>
+                <strong>Dear prospective collaborators:</strong> <span class="prospective-toggle" onclick="toggleProspective()">Click here</span> for information.
+            </p>
+            <div id="prospective-content" class="prospective-content">
+                <p>Thank you for your interest in working with me! I am always looking for potential collaborators and motivated students to work together on research.</p>
+                <p style="margin-top: 10px;"><strong>For collaborators:</strong> Please send me an email with a brief description of the research topics or ideas you would like to collaborate on.</p>
+                <p style="margin-top: 10px;"><strong>For Princeton students:</strong> If you're already at Princeton and interested in research opportunities (IW, Senior thesis, undergraduate research), please email me with your resume, transcript, and a brief description of your research interests.</p>
+                <p style="margin-top: 10px;"><strong>For non-Princeton students:</strong> Most research I conduct does not require in-person presence; however, granting access to campus compute and file access may be difficult. If you are interested in remote collaboration, and have access to your own compute needed for your research interests, please reach out via email.</p>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterPublications('all')">All</button>
+                <button class="filter-btn" onclick="filterPublications('highlighted')">Selected</button>
+                <button class="filter-btn" onclick="filterPublications('2025')">2025</button>
+                <button class="filter-btn" onclick="filterPublications('2024')">2024</button>
+                <button class="filter-btn" onclick="filterPublications('2023')">2023 and Older</button>
+            </div>
+
+            <div id="publications-list">
+                <div class="publication highlighted" data-year="2025" data-highlighted="true">
+                    <a href="data/pub-media/influx_gallery.mp4" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <video class="pub-media" autoplay loop muted playsinline loading="lazy" preload="none">
+                            <source src="data/pub-media/influx_gallery.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            InFlux: A Benchmark for Self-Calibration of Dynamic Intrinsics of Video Cameras
+                        </div>
+                        <div class="pub-authors">
+                            <span class="me">Erich Liang</span>, Roma Bhattacharjee*, Sreemanti Dey*, Rafael Moschopoulos, Caitlin Wang, Michel Liao, Grace Tan, Andrew Wang, Karhan Kayan, Stamatis Alexandropoulos, Jia Deng
+                        </div>
+                        <div class="pub-venue">NeurIPS Datasets & Benchmarks 2025 <span class="award-text">(New)</span></div>
+                        <div class="pub-links">
+                            <a href="https://influx.cs.princeton.edu/" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="https://arxiv.org/abs/2510.23589" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="https://github.com/princeton-vl/InFlux" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2025" data-highlighted="false">
+                    <a href="data/pub-media/princeton365.mp4" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <video class="pub-media" autoplay loop muted playsinline loading="lazy" preload="none">
+                            <source src="data/pub-media/princeton365.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            Princeton365: A Diverse Dataset with Accurate Camera Pose
+                        </div>
+                        <div class="pub-authors">
+                            Karhan Kayan*, Stamatis Alexandropoulos*, Rishabh Jain, Yiming Zuo, <span class="me">Erich Liang</span>, Jia Deng
+                        </div>
+                        <div class="pub-venue">ICCV 2025</div>
+                        <div class="pub-links">
+                            <a href="https://princeton365.cs.princeton.edu/" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="https://arxiv.org/abs/2506.09035" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="https://github.com/princeton-vl/Princeton365" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-highlighted="false">
+                    <a href="data/pub-media/quadrotor.png" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <img src="data/pub-media/quadrotor.png" alt="Publication thumbnail" class="pub-media" loading="lazy">
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            Autonomous Quadrotor Navigation Using LiDAR SLAM and Adaptive Tree-Based Path Planning in Simulation
+                        </div>
+                        <div class="pub-authors">
+                            Arnav Sharma, <span class="me">Erich Liang</span>
+                        </div>
+                        <div class="pub-venue">ICDS 2024</div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10756422" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication highlighted" data-year="2024" data-highlighted="true">
+                    <a href="data/pub-media/layeredflow.jpg" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <img src="data/pub-media/layeredflow.jpg" alt="Publication thumbnail" class="pub-media" loading="lazy">
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            LayeredFlow: A Real-World Benchmark for Non-Lambertian Multi-Layer Optical Flow
+                        </div>
+                        <div class="pub-authors">
+                            Hongyu Wen, <span class="me">Erich Liang</span>, Jia Deng
+                        </div>
+                        <div class="pub-venue">ECCV 2024</div>
+                        <div class="pub-links">
+                            <a href="https://layeredflow.cs.princeton.edu/" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="https://arxiv.org/abs/2409.05688" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="https://github.com/princeton-vl/LayeredFlow" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication highlighted" data-year="2024" data-highlighted="true">
+                    <a href="data/pub-media/radar_fields.mp4" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <video class="pub-media" autoplay loop muted playsinline loading="lazy" preload="none">
+                            <source src="data/pub-media/radar_fields.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            Radar Fields: Frequency-Space Neural Scene Representations for FMCW Radar
+                        </div>
+                        <div class="pub-authors">
+                            David Borts, <span class="me">Erich Liang</span>, Tim Brödermann, Andrea Ramazzina, Stefanie Walz, Edoardo Palladin, Jipeng Sun, David Bruggemann, Christos Sakaridis, Luc Van Gool, Mario Bijelic, Felix Heide
+                        </div>
+                        <div class="pub-venue">SIGGRAPH 2024</div>
+                        <div class="pub-links">
+                            <a href="https://light.princeton.edu/publication/radarfields/" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="https://arxiv.org/abs/2405.04662" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="https://github.com/princeton-computational-imaging/RadarFields" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication highlighted" data-year="2023" data-highlighted="true">
+                    <a href="data/pub-media/hr_neus.png" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <img src="data/pub-media/hr_neus.png" alt="Publication thumbnail" class="pub-media" loading="lazy">
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            HR-NeuS: Recovering High-Frequency Surface Geometry via Neural Implicit Surfaces
+                        </div>
+                        <div class="pub-authors">
+                            <span class="me">Erich Liang</span>, Kenan Deng, Xi Zhang, Chun-Kai Wang
+                        </div>
+                        <div class="pub-venue">ArXiV 2023</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2302.06793" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2023" data-highlighted="false">
+                    <a href="data/pub-media/nuivend_demo.mp4" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <video class="pub-media" autoplay loop muted playsinline loading="lazy" preload="none">
+                            <source src="data/pub-media/nuivend_demo.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            NuiVend - Next Generation Vending Machine
+                        </div>
+                        <div class="pub-authors">
+                            Robert Gruen, <span class="me">Erich Liang</span>
+                        </div>
+                        <div class="pub-venue">CSCI 2016</div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/abstract/document/7881402" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mentoring">
+            <h2>Mentoring</h2>
+            <!-- <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+                I'm passionate about mentoring and have had the privilege of working with talented students on research projects.
+            </p> -->
+            
+            <div style="margin-bottom: 25px;">
+                <h3 style="font-size: 1.2em; margin-bottom: 10px; color: var(--text-primary);">Current Mentees</h3>
+                <div style="color: var(--text-secondary); line-height: 1.8;">
+                    <p><strong>David Liu</strong> - Undergraduate Student at Princeton, fall 2025.</p>
+                    <p><strong>Benjamin Zhou</strong> - Undergraduate Student at Princeton (IW), fall 2025.</p>
+                    <p><strong>Caleb Kha-Uong</strong> - Undergraduate Student at Princeton, fall 2025.</p>
+                    <p><strong>William Oh</strong> - Undergraduate Student at Princeton, fall 2025.</p>
+                    <p><strong>Chinmaya Saran</strong> - Undergraduate Student at Princeton, fall 2025.</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="font-size: 1.2em; margin-bottom: 10px; color: var(--text-primary);">Past Mentees</h3>
+                <div style="color: var(--text-secondary); line-height: 1.8;">
+                    <p><strong>Andrew Wang</strong> - Undergraduate Student at Princeton, spring 2025.</p>
+                    <p><strong>Roma Bhattacharjee</strong> - Undergraduate Student at Princeton (ST), 2024-2025. She won the <span class="award-text">Outstanding Computer Science Senior Thesis Prize</span>.</p>
+                    <p><strong>Caitlin Wang</strong> - Undergraduate Student at Princeton (IW), 2024-2025.</p>
+                    <p><strong>Rafael Moschopoulos</strong> - Undergraduate Student at Princeton, 2024-2025.</p>
+                    <p><strong>Grace Tan</strong> - Undergraduate Student at Princeton, 2024-2025.</p>
+                    <p><strong>Arnav Sharma</strong> - High School Student, 2024-2025. Now at UMD.</p>
+                    <p><strong>Michel Liao</strong> - Undergraduate Student at Princeton (IW), 2023-2025.</p>
+                    <p><strong>William Pan</strong> - Undergraduate Student at Princeton (IW), 2023-2024.</p>
+                    <p><strong>Emily Zhou</strong> - Undergraduate Student at Princeton, 2023-2024.</p>
+                    <p><strong>Addison Wu</strong> - Undergraduate Student at Princeton, 2023-2024.</p>
+                    <p><strong>Sumanth Maddirala</strong> - Undergraduate Student at Princeton, 2023-2024.</p>
+                    <p><strong>Mingxuan Wu</strong> - Visiting Undergraduate Student at UC Berkeley, 2022-2023.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+                I have experience as a teaching assistant for the following courses:
+            </p>
+            
+            <div style="color: var(--text-secondary); line-height: 1.8;">
+                <p><strong>COS 526: Neural Rendering</strong> - Teaching Assistant, Spring 2024<br>
+                <span style="margin-left: 20px; font-size: 0.95em;">Developed course materials, held office hours, precepts, and graded assignments.</span></p>
+                
+                <p style="margin-top: 15px;"><strong>COS 324: Introduction to Machine Learning</strong> - Head Teaching Assistant, Fall 2024<br>
+                <span style="margin-left: 20px; font-size: 0.95em;">Assisted with lectures, coordinated teaching staff efforts for assignment release and grading, designed exam questions, and mentored JRW student projects.</span></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            © 2025 Erich Liang. Last updated: November 2025.
+        </div>
+    </footer>
+
+    <script>
+        function toggleProspective() {
+            const content = document.getElementById('prospective-content');
+            content.classList.toggle('show');
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('show');
+            });
+        });
+
+        function filterPublications(filter) {
+            const publications = document.querySelectorAll('.publication');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            publications.forEach(pub => {
+                if (filter === 'all') {
+                    pub.style.display = 'flex';
+                } else if (filter === 'highlighted') {
+                    pub.style.display = pub.dataset.highlighted === 'true' ? 'flex' : 'none';
+                } else {
+                    pub.style.display = pub.dataset.year === filter ? 'flex' : 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
