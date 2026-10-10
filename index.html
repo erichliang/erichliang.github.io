@@ -534,13 +534,14 @@
             <img src="data/images/headshot.jpg" alt="Profile Photo" class="profile-photo">
             <div class="hero-content">
                 <h1>Erich Liang</h1>
-                <div class="title">Ph.D. Student • 3D Vision & Robotics • Princeton University</div>
+                <div class="title">Ph.D. Student • Robotics & 3D Vision • Princeton University</div>
                 <div class="bio">
-                    <p>I am a 3rd year Ph.D. student in Computer Science at <a href="https://www.cs.princeton.edu/" class="inline-link" target="_blank" rel="noopener noreferrer">Princeton University</a>, advised by Prof. <a href="https://www.cs.princeton.edu/~jiadeng/" class="inline-link" target="_blank" rel="noopener noreferrer">Jia Deng</a>.
-                        My research interests include <strong>3D vision, robotics, and graphics</strong>. I enjoy working on problems that help us combine geometric constraints with large-scale data to build 3D algorithms and robots capable of mirroing how humans perceive the world.
+                    <p>I am a 4th year Ph.D. student in Computer Science at <a href="https://www.cs.princeton.edu/" class="inline-link" target="_blank" rel="noopener noreferrer">Princeton University</a>, advised by Prof. <a href="https://www.cs.princeton.edu/~jiadeng/" class="inline-link" target="_blank" rel="noopener noreferrer">Jia Deng</a>.
+                        My research interests include <strong>robotics, 3D vision, and graphics</strong>. I enjoy working on problems that help us combine geometric constraints with large-scale data to build robots and 3D algorithms capable of mirroring how humans perceive the world.
                         Topics I've explored include:
                     </p>
                     <ul class="bio-list">
+                        <li><strong>Robotic Perception & Navigation</strong>: robust perception and navigation for robots, sim2real transfer.</li>
                         <li><strong>Imaging & Camera Calibration</strong>: lens optics and calibration for mapping 3D onto 2D images.</li>
                         <li><strong>3D Reconstruction & Geometry</strong>: mesh reconstruction, inverse graphics, SLAM, NeRFs, 3DGS.</li>
                         <li><strong>Generative 3D Models</strong>: view-based 3D scene generation, occlusion reasoning, diffusion.</li>
@@ -587,12 +588,74 @@
             <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterPublications('all')">All</button>
                 <button class="filter-btn" onclick="filterPublications('highlighted')">Selected</button>
+                <button class="filter-btn" onclick="filterPublications('2026')">2026</button>
                 <button class="filter-btn" onclick="filterPublications('2025')">2025</button>
                 <button class="filter-btn" onclick="filterPublications('2024')">2024</button>
                 <button class="filter-btn" onclick="filterPublications('2023')">2023 and Older</button>
             </div>
 
             <div id="publications-list">
+                <div class="publication highlighted" data-year="2026" data-highlighted="true">
+                    <a href="data/pub-media/influx++_gallery.mp4" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <video class="pub-media" autoplay loop muted playsinline loading="lazy" preload="none">
+                            <source src="data/pub-media/influx++_gallery.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            InFlux++: Real and Synthetic Data for Estimating Dynamic Camera Intrinsics
+                        </div>
+                        <div class="pub-authors">
+                            <span class="me">Erich Liang</span>, Caleb Kha-Uong*, Chinmaya Saran*, Sreemanti Dey*, David W. Liu, Junhan Ouyang, Benjamin Zhou, Jia Deng
+                        </div>
+                        <div class="pub-venue">ECCV 2026 <span class="award-text">(New)</span></div>
+                        <div class="pub-links">
+                            <a href="https://influx.cs.princeton.edu/" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="https://arxiv.org/abs/2607.05389" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="https://github.com/princeton-vl/InFlux" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2026" data-highlighted="false">
+                    <a href="data/pub-media/procfunc.png" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <img src="data/pub-media/procfunc.png" alt="Publication thumbnail" class="pub-media" loading="lazy">
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            ProcFunc: Function-Oriented Abstractions for Procedural 3D Generation in Python
+                        </div>
+                        <div class="pub-authors">
+                            Alexander Raistrick, Karhan Kayan, Jack Nugent, David Yan, Lingjie Mei, Meenal Parakh, Hongyu Wen, Dylan Li, Yiming Zuo, <span class="me">Erich Liang</span>, Jia Deng
+                        </div>
+                        <div class="pub-venue">Submitted for review <span class="award-text">(New)</span></div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2604.26943" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="https://github.com/princeton-vl/procfunc" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2026" data-highlighted="false">
+                    <a href="data/pub-media/scipredict.png" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
+                        <img src="data/pub-media/scipredict.png" alt="Publication thumbnail" class="pub-media" loading="lazy">
+                    </a>
+                    <div class="pub-content">
+                        <div class="pub-title">
+                            SciPredict: Can LLMs Predict the Outcomes of Scientific Experiments in Natural Sciences?
+                        </div>
+                        <div class="pub-authors">
+                            Udari Madhushani Sehwag, Elaine Lau, Haniyeh Ehsani Oskouie, Shayan Shabihi, <span class="me">Erich Liang</span>, Andrea Toledo, Guillermo Mangialardi, Sergio Fonrouge, Ed-Yeremai Hernandez Cardona, Paula Vergara, Utkarsh Tyagi, Chen Bo Calvin Zhang, Pavi Bhatter, Nicholas Johnson, Furong Huang, Ernesto Gabriel Hernandez Montoya, Bing Liu
+                        </div>
+                        <div class="pub-venue">ICML 2026, ICLR 2026 Workshop on Foundation Models for Science</div>
+                        <div class="pub-links">
+                            <a href="https://scale.com/research/scipredict" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
+                            <a href="https://arxiv.org/abs/2604.10718" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <a href="https://github.com/scaleapi/scipredict" class="pub-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="publication highlighted" data-year="2025" data-highlighted="true">
                     <a href="data/pub-media/influx_gallery.mp4" download target="_blank" rel="noopener noreferrer" class="pub-media-link">
                         <video class="pub-media" autoplay loop muted playsinline loading="lazy" preload="none">
@@ -606,7 +669,7 @@
                         <div class="pub-authors">
                             <span class="me">Erich Liang</span>, Roma Bhattacharjee*, Sreemanti Dey*, Rafael Moschopoulos, Caitlin Wang, Michel Liao, Grace Tan, Andrew Wang, Karhan Kayan, Stamatis Alexandropoulos, Jia Deng
                         </div>
-                        <div class="pub-venue">NeurIPS Datasets & Benchmarks 2025 <span class="award-text">(New)</span></div>
+                        <div class="pub-venue">NeurIPS Datasets & Benchmarks 2025</div>
                         <div class="pub-links">
                             <a href="https://influx.cs.princeton.edu/" class="pub-link" target="_blank" rel="noopener noreferrer">Project Page</a>
                             <a href="https://arxiv.org/abs/2510.23589" class="pub-link" target="_blank" rel="noopener noreferrer">Paper</a>
@@ -746,22 +809,22 @@
             <div style="margin-bottom: 25px;">
                 <h3 style="font-size: 1.2em; margin-bottom: 10px; color: var(--text-primary);">Current Mentees</h3>
                 <div style="color: var(--text-secondary); line-height: 1.8;">
-                    <p><strong>Harry Ouyang</strong> - Undergraduate Student at Princeton, 2025-2026. We won <span class="award-text">ReMatch+ funding</span> (summer 2026).</p>
-                    <p><strong>Chinmaya Saran</strong> - Undergraduate Student at Princeton, 2025-2026. We won <span class="award-text">ProjectX funding</span> (summer 2026).</p>
-                    <p><strong>Conan Chen</strong> - Undergraduate Student at Princeton, spring 2026. We won <span class="award-text">Eric F.S. Pai '83 Student Research Fund</span> (summer 2026).</p>
-                    <p><strong>Caleb Kha-Uong</strong> - Undergraduate Student at Princeton, 2025-2026.</p>
-                    <p><strong>David Liu</strong> - Undergraduate Student at Princeton, 2025-2026.</p>
-                    <p><strong>Benjamin Zhou</strong> - Undergraduate Student at Princeton (IW), 2025-2026.</p>
-                    <p><strong>Hellen Luo</strong> - Undergraduate Student at Princeton, spring 2026.</p>
-                    <p><strong>Shaunak Bhangale</strong> - Visiting Undergraduate Student from UPenn, summer 2026.</p>
+                    <p><strong>Harry Ouyang</strong> - Undergraduate Student at Princeton (IW), 2025 - present. We won <span class="award-text">ReMatch+ funding</span> (summer 2026).</p>
+                    <p><strong>Chinmaya Saran</strong> - Undergraduate Student at Princeton, 2025 - present. We won <span class="award-text">ProjectX funding</span> (summer 2026).</p>
+                    <p><strong>Conan Chen</strong> - Undergraduate Student at Princeton (IW), spring 2026 - present. We won <span class="award-text">Eric F.S. Pai '83 Student Research Fund</span> (summer 2026).</p>
+                    <p><strong>Shaunak Bhangale</strong> - Visiting Undergraduate Student from UPenn, summer 2026 - present.</p>
+                    <p><strong>Hellen Luo</strong> - Undergraduate Student at Princeton, spring 2026 - present.</p>
+                    <p><strong>Caleb Kha-Uong</strong> - Undergraduate Student at Princeton, 2025 - present.</p>
+                    <p><strong>David Liu</strong> - Undergraduate Student at Princeton, 2025 - present.</p>
+                    <p><strong>Benjamin Zhou</strong> - Undergraduate Student at Princeton (IW), 2025 - present.</p>
                 </div>
             </div>
 
             <div>
                 <h3 style="font-size: 1.2em; margin-bottom: 10px; color: var(--text-primary);">Past Mentees</h3>
                 <div style="color: var(--text-secondary); line-height: 1.8;">
-                    <p><strong>William Oh</strong> - Undergraduate Student at Princeton, fall 2025.</p>
                     <p><strong>Andrew Wang</strong> - Undergraduate Student at Princeton, spring 2025.</p>
+                    <p><strong>William Oh</strong> - Undergraduate Student at Princeton, fall 2025.</p>
                     <p><strong>Roma Bhattacharjee</strong> - Undergraduate Student at Princeton (ST), 2024-2025. She won the <span class="award-text">Outstanding Computer Science Senior Thesis Prize</span>.</p>
                     <p><strong>Caitlin Wang</strong> - Undergraduate Student at Princeton (IW), 2024-2025.</p>
                     <p><strong>Rafael Moschopoulos</strong> - Undergraduate Student at Princeton, 2024-2025.</p>
@@ -795,7 +858,7 @@
 
     <footer>
         <div class="container">
-            © 2026 Erich Liang. Last updated: June 2026.
+            © 2026 Erich Liang. Last updated: October 2026.
         </div>
     </footer>
 
